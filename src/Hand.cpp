@@ -1,25 +1,71 @@
 #include "Hand.h"
+#include <iostream>
+#include <vector>
+//#include<algorithm>
 
-void Hand::setlist(Carte *t) {
-  for (int i = 0; i < NB; i++) {
-    listcarte[i] = t[i];
+// effacer la pile
+void Hand::effacerPile() { pileDeCartes = {}; }
+
+// supprimer le dernier element
+void Hand::suppDernierELement() { this->pileDeCartes.pop_back(); }
+
+// Ajouter a la pile et augmenter le score du joueur
+void Hand::ajouterPile(vector<Carte> cartes, Joueur *j) {
+  sort(cartes.begin(), cartes.end()); // tri du vecteur
+  Paquet *ajout = new Paquet();
+
+  // ajout des cartes à la pile
+  for (int i - 0; i < cartes.size(); i++) {
+    ajout->ajouterCarte(cartes.at(i)); // addCard
+  }
+  this->pileDeCartes.push_back(ajout);
+
+  // modif du score
+  int somme = 0;
+  for (int i = 0; i < cartes.size(); i++) {
+    if (cartes.at(i).getValeur() == 1) { // si AS
+      somme += 25
+    } else if (cartes.at(i).getValeur() <= 10) { // cartes de 2 a 10
+      somme += somme += cartes.at(i).getValeur();
+    } else {
+      somme += 10;
+    }
+  }
+  j->score = (j->score + somme); // ATTENTION : SCORE EST PRIVE! (hand aussi)
+}
+
+// retourner la pile
+vector<Paquet *> Hand::getPile() { return pileDeCartes; }
+
+void Hand::setPile(vector<Paquet *> nouvellePile) {
+  pileDeCartes = nouvellePile;
+}
+
+// ajouter une carte à une pile existante
+void Hand::ajouterPileExistante(Carte c, int ind, Joueur *j) {
+  if (c < pileDeCartes.at(ind)->getCartes().at(0)){ //fonction getCards de Paquet //si carte plus petite que la premiere de la pile, on la met devant
+    this->pileDeCartes.at(ind)->ajoutDevant(c); // inBegin de Deck
+  }
+  else {
+    this->pileDeCartes.at(ind)->ajouterCarte(c); // Sinon, apres
+  }
+  int somme = 0;
+  if (c.getValeur()==1){ //si AS
+    somme +=15;
+  }
+  else if (c.getValeur() <= 10){ // si cartes de 2 a 10
+  somme += c.getValeur();
+  }
+  else{ // valet, dame, roi
+    somme +=10;
+  }
+  j->score += somme; // ATTENTION : SCORE PRIVE
+}
+
+// afficher toutes les piles
+void Hand::afficherPiles() {
+  for (int i = 0; i < pileDeCartes.size(); i++) {
+    std::cout << "Pile #" << (i + 1) << std::endl;
+    pileDeCartes[i]->viewerCartes();
   }
 }
-
-Carte &Hand::tirer() {
-  int indice = rand() % (this->nb_cartes); // choisir un indice entre 0 et le nombre de cartes
-  Carte *ct = new Carte(listcarte[indice]); // on memorise la carte
-  decaler(indice, nb_cartes);               // decaler la liste des cartes
-  listcarte[nb_cartes - 1] = *ct;           // on met la carte a tirer a la fin
-  nb_cartes--;                              // une carte de moins dans la main
-  return listcarte[nb_cartes];              // retourner la carte choisie
-}
-
-void Hand::decaler(int debut, int fin) {
-
-  for (int i = debut; i < fin; i++) {
-    listcarte[i] = listcarte[i + 1];
-  }
-}
-int Hand::getnb_carte() { return nb_carte; }
-Carte &Hand::getcarte(int pos) { return listcarte[pos]; }

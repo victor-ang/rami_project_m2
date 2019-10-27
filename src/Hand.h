@@ -1,29 +1,31 @@
 #ifndef HAND_H
 #define HAND_H
+#include"Carte.h"
+#include"Paquet.h"
+#include"Joueur.h"
+#include<vector>
 
-#define NB 10
 
 class Hand {
-  Carte listcarte[NB];
-  int nb_cartes;
+  vector<Paquet*> pileDeCartes;
 
 public:
-  // constructeur par defaut
-  Hand() { this->nb_cartes = NB[]; }
-  // constructeur par copie
-  Hand(const Hand &h) {
-    this->nb_cartes = h.nb_cartes;
-    for (int i = 0; i < NB; i++)
-      listcarte[i] = h.listcarte[i];
+  // constructeur par defaut (pile vide)
+  Hand() {
+    pileDeCartes = {};
   }
-  void setlist(Carte *t);
-  Carte &tirer();
-
-  void decaler(int debut, int fin);
-  int getnb_carte();
-  Carte &getcarte(int pos);
-
-  ~Hand() { delete[] listcarte; } // destructeur
+  // Constructeur avec pile donnée
+  Hand(vector<Paquet*> pile) {
+    pileDeCartes = pile;
+  }
+  
+  void effacerPile(); // effacer la pile
+  void suppDernierELement(); // supprimer le dernier element
+  void ajouterPile(vector<Carte> cartes, Joueur* j); // Ajouter a la pile et augmenter le score du joueur
+  vector<Paquet*> getPile(); // retourner la pile
+  void setPile(vector<Paquet*> nouvellePile);
+  void ajouterPileExistante(Carte c, int ind, Joueur* j); //ajouter une carte à une pile existante
+  void afficherPiles(); // afficher toutes les piles
 };
 
 #endif

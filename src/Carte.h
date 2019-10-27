@@ -1,31 +1,35 @@
 #ifndef CARTE_H
 #define CARTE_H
-#include<iostream>
+#include <iostream>
+#include <string>
 
 class Carte {
+  // Valeur et couleur de la carte
   int valeur;
   std::string couleur;
 
 public:
   Carte() {
-    valeur = 0;
-    couleur = "";
+    valeur = 1;
+    couleur = "Pique";
   } // constructeur par defaut
 
-  Carte(const Carte &ct) // constructeur par copie
+  Carte(int valCarte, std::string couleurCarte) // valeur de la carte connue
   {
-    this->valeur = ct.valeur;
-    this->couleur = ct.couleur;
+    this->valeur = valCarte;
+    this->couleur = couleurCarte;
   }
 
-  int compare(Carte &ct);
-  void setvaleur(int val);   // set value
-  void setcouleur(std::string coul); // set color
-  int getvaleur();           // get valeur
-  std::string getcouleur();          // get couleur
-  void echange(Carte &ct);   // échanger deux cartes
+  int getValeur();          // obtenir numero de la carte
+  std::string getCouleur(); // obtenir couleur de la carte
+  void afficherCarte(); // afficher une carte
 
-  ~Carte() {} // destructeur
+  // Surcharge des opérateurs. Permer de comparer des objets de type carte en utilisant les opérateurs classiques
+  bool operator==(const Carte c) const;
+  bool operator<(const Carte c) const;
+  bool operator>(const Carte c) const;
+  bool operator<=(const Carte c) const;
+  bool operator>=(const Carte c) const;
 };
 
 #endif
