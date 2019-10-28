@@ -16,7 +16,7 @@ void Hand::ajouterPile(vector<Carte> cartes, Joueur *j) {
 
   // ajout des cartes à la pile
   for (int i - 0; i < cartes.size(); i++) {
-    ajout->ajouterCarte(cartes.at(i)); // addCard
+    ajout->ajouterCarte(cartes.at(i));
   }
   this->pileDeCartes.push_back(ajout);
 
@@ -43,8 +43,8 @@ void Hand::setPile(vector<Paquet *> nouvellePile) {
 
 // ajouter une carte à une pile existante
 void Hand::ajouterPileExistante(Carte c, int ind, Joueur *j) {
-  if (c < pileDeCartes.at(ind)->getCartes().at(0)){ //fonction getCards de Paquet //si carte plus petite que la premiere de la pile, on la met devant
-    this->pileDeCartes.at(ind)->ajoutDevant(c); // inBegin de Deck
+  if (c < pileDeCartes.at(ind)->getCartes().at(0)){ //si carte plus petite que la premiere de la pile, on la met devant
+    this->pileDeCartes.at(ind)->ajoutDevant(c);
   }
   else {
     this->pileDeCartes.at(ind)->ajouterCarte(c); // Sinon, apres

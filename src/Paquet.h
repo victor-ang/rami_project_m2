@@ -1,37 +1,43 @@
 #ifndef PAQUET_H
 #define PAQUET_H
 #include "Carte.h"
-#include "Hand.h"
-using namespace std;
+#include<vector>
 
 // Ensemble des cartes
 class Paquet {
-  Carte carte[52];
 
 public:
+
+  char addPile; // private?
+  vector<Paquet> cartesPaquet; // private ?
+  
+
   // constructeur par defaut
   Paquet() {
-    int i = 0;
-    for (int coul = 0; coul < 4;
-         coul++) // 0 à 3 (carreau, trèfle, coeur, pique)
-      for (int val = 0; val < 13; val++) // 1 à 10 + Valet, Dame, Roi
-      {
-        carte[i].setvaleur(val);
-        carte[i].setcouleur(coul);
-        i++;
-      }
+    cartesPaquet = {};
+    addPile = 'd'; // Utilisée pour ajouter des cartes a une pile existante. p=paquet,  s=sequence, m=meld
   }
-  void trier();
 
-  // Melanger l'ensemble des cartes
-  void melanger();
+  // Constructeur avec cartes connues
 
-  // Couper le paquet en deux sous paquet
-  void split(Hand &h1, Hand &h2);
+  Paquet(vector<Carte> c){
+    cartesPaquet = c;
+  }
 
-  Carte getcarte(int pos);
-
-  ~Paquet() { delete[] carte; } // destructeur
+ void suppDerniereCarte();
+ void initPaquet();
+ void viderPile();
+ void ajoutDevant(Carte c);
+ void melangerPaquet();
+ void nouveauPaquet();
+ Carte piocheCarte();
+ void ajouterCarte(Carte carteAjoutee);
+ void afficherCartes();
+ void supprimerCarte(Carte c);
+ void viewerCartes();
+ int taillePaquet();
+ void suppCarteIndice(int ind);
+ vector<Carte> getCartes();
 };
 
 #endif
