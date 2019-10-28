@@ -10,7 +10,7 @@ void Joueur::afficherNom() { std::cout << nom << std::endl; }
 // Combien de cartes chaque joueur pioche a chaque nouveau jeu
 void Joueur::premiereMain(Paquet *paquet) {
   for (int i = 0; i < 7; i++) {
-    hand->ajouterCarte(target->piocheCarte()); 
+    hand->ajouterCarte(paquet->piocheCarte()); 
   }
 }
 
@@ -35,8 +35,8 @@ void Joueur::soustraireScore() {
   for (int i = 0; i < hand->taillePaquet(); i++) { // on parcourt le vecteur hand
     if (hand->getCartes().at(i).getValeur() <= 10) {  // si carte inf à 10, pts=valeur de la carte
       somme += hand->getCartes()[i].getValeur();
-    } else if (hand->getCartes().at(i).getValeur() == 1) { // si  AS,  15 pts
-      somme += 15;
+    } else if (hand->getCartes().at(i).getValeur() == 1) { // si  AS,  1 pts
+      somme += 1;
     } else { //si figure, 10 pts
       somme += 10;
     }

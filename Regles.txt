@@ -1,0 +1,81 @@
+###########################################################################
+#                                                                         #
+#                              Règles du jeu                              #
+#                                                                         #
+#                                                                         #
+###########################################################################
+
+
+Paquet :
+
+
+Jeu de 52 cartes.
+
+Le roi est la carte la plus forte.
+L'As est la carte la plus faible.
+
+---------------------------------------------------------------------------
+
+But : 
+
+
+Etre le premier à poser toutes ses cartes, en 1 ou plusieurs fois.
+
+
+---------------------------------------------------------------------------
+
+Configuration :
+
+
+Chaque joueur a 13 cartes.
+
+Les cartes qui ne sont pas distribuées sont placées face contre table au
+milieu de la table pour former la pioche.
+
+La premiere carte de la pioche est retournée à coté de la pioche pour former
+la défausse.
+
+
+---------------------------------------------------------------------------
+
+Séquence de jeu :
+
+
+1. Piocher une carte, soit dans la pioche, soit dans la défausse.
+
+2. Le joueur peut placer une combinaison sur la table (mais n'est pas obligé), 
+ou ajouter des cartes à une combinaison déjà posée sur la table.
+
+3. Le joueur doit se défausser d'une carte, en l'ajoutant face visible au
+dessus de la défausse.
+Exception : si le joueur a posé toutes ses cartes, il n'a pas à se défausser.
+
+ATTENTION : si un joueur a pioché dans la défausse, il ne peut pas se
+défausser de cette même carte.
+
+
+---------------------------------------------------------------------------
+
+Combinaisons valables :
+
+
+Brelan : 3 cartes identiques
+Carré : 4 cartes identiques
+
+Séquence : au moins 3 cartes de même couleur.
+
+
+
+---------------------------------------------------------------------------
+
+Score :
+
+
+Quand un joueur a terminé, on compte les points.
+Toutes les cartes restantes dans les mains des autres joueurs correspondent
+aux points gagnés par celui qui a posé toutes ses cartes.
+
+
+AS : 1 point
+Cartes de 2 à 10 : nombre de points = numéro de la carte
+Valet, Dame, Roi : 10 points

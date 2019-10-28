@@ -7,11 +7,16 @@
 #include<vector>
 
 class Joueur {
+  
+
+public:
+
+  //to put in private
   std::string nom;
   Paquet *hand;
   int score;
+  //
 
-public:
   // constructeur par defaut : initialise le joueur
   Joueur() {
     this->hand ={};

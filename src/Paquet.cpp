@@ -1,9 +1,8 @@
 #include "Paquet.h"
 #include <iostream>
+#include <stdlib.h>
 #include <string>
-//#include<stdlib.h>
-//#include<time.h>
-#include <Carte.h>
+#include "Carte.h"
 #include <algorithm>
 
 // Symboles ASCII cartes
@@ -13,47 +12,47 @@ const char Carreau[] = "\xe2\x99\xa6";
 const char Pique[] = "\xe2\x99\xa0";
 
 void Paquet::suppDerniereCarte() {
-  this->cartesPaquet.pop_back(); // pop_back vide retire le dernier element du vecteur
+  this->cartesPaquet
+      .pop_back(); // pop_back vide retire le dernier element du vecteur
 }
 void Paquet::initPaquet() {
   nouveauPaquet();
   melangerPaquet();
 }
-void Paquet::viderPile() {
-  this->cartesPaquet.clear();
-}
+void Paquet::viderPile() { this->cartesPaquet.clear(); }
 void Paquet::ajoutDevant(Carte c) {
-  this->cartesPaquet.insert(cartesPaquet.begin(), c); // ajoute carte a l'avant du paquet
+  this->cartesPaquet.insert(cartesPaquet.begin(),
+                            c); // ajoute carte a l'avant du paquet
 }
 void Paquet::melangerPaquet() {
-  random_shuffle(
+  std::random_shuffle(
       cartesPaquet.begin(),
       cartesPaquet.end()); // fonction du package algorithm. Melange le vecteur
                            // (on lui donne le debut et la fin)
 }
 void Paquet::nouveauPaquet() {
   std::string couleur;
-  
+
   // Creation du paquet
-  for (int cou = 0; cou<4; cou++){
-    switch(cou){
-      case 0:
-        couleur = "Pique";
-        break;
-      case 1:
-        couleur = "Coeur";
-        break;
-      case 2:
-        couleur = "Trefle";
-        break;
-      case 3:
-        couleur = "Carreau";
-        break;
+  for (int cou = 0; cou < 4; cou++) {
+    switch (cou) {
+    case 0:
+      couleur = "Pique";
+      break;
+    case 1:
+      couleur = "Coeur";
+      break;
+    case 2:
+      couleur = "Trefle";
+      break;
+    case 3:
+      couleur = "Carreau";
+      break;
     }
 
     // Creation des cartes
-    for (int car = 1 ; car <=13 ; car++){
-      Carte carteActuelle(car,couleur);
+    for (int car = 1; car <= 13; car++) {
+      Carte carteActuelle(car, couleur);
       ajouterCarte(carteActuelle);
     }
   }
@@ -73,7 +72,7 @@ void Paquet::afficherCartes() {
 }
 void Paquet::supprimerCarte(Carte c) {
   if (taillePaquet() == 0) { // si paquet vide
-    return; 
+    return;
   } else if (taillePaquet() == 1) { // si plus qu'une carte
     suppDerniereCarte();
     return;
@@ -85,7 +84,8 @@ void Paquet::supprimerCarte(Carte c) {
     }
   }
 }
-void Paquet::viewerCartes() { // Fonction d'affichage visuel des cartes dans le terminal
+void Paquet::viewerCartes() { // Fonction d'affichage visuel des cartes dans le
+                              // terminal
   int totalCartes = cartesPaquet.size();
   int carteActuelle;
   int i = 0;
@@ -176,8 +176,7 @@ void Paquet::viewerCartes() { // Fonction d'affichage visuel des cartes dans le 
 
       }
       // afficher la couleur
-      else if ((y == (yBounds - 3)) &&
-               (x == 3)) { 
+      else if ((y == (yBounds - 3)) && (x == 3)) {
         std::string couleur = cartesPaquet[(totalCartes - 1)].getCouleur();
         if (couleur == "Pique") {
           std::cout << Pique;
@@ -199,12 +198,9 @@ void Paquet::viewerCartes() { // Fonction d'affichage visuel des cartes dans le 
     std::cout << std::endl;
   }
 }
-int Paquet::taillePaquet(){
-  return this->cartesPaquet.size();
-}
+int Paquet::taillePaquet() { return this->cartesPaquet.size(); }
 void Paquet::suppCarteIndice(int ind) {
-  this->cartesPaquet.erase(cartesPaquet.begin()+ind); // supprime la carte a un indice donné
+  this->cartesPaquet.erase(cartesPaquet.begin() +
+                           ind); // supprime la carte a un indice donné
 }
-vector<Carte> Paquet::getCartes() {
-  return this->cartesPaquet;
-}
+std::vector<Carte> Paquet::getCartes() { return this->cartesPaquet; }
