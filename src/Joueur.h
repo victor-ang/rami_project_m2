@@ -7,7 +7,7 @@
 #include<vector>
 
 class Joueur {
-  
+
 
 public:
 

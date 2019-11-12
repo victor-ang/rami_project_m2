@@ -83,7 +83,7 @@ int main(){
                 break;
         }
     }
-    std::cout<< "Ciao bitches" << std::endl;
+    std::cout<< "Hasta luego" << std::endl;
 
 
     return 0;

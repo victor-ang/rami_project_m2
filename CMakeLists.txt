@@ -17,8 +17,3 @@ file(GLOB SRC
 # ---------- EXECUTABLES -----------
 #console
 add_executable(console ${SRC} src/main.cpp)
-
-# viewer
-#set(VIEWER_NAME viewer) # nom de l'executable
-#find_package(Qt5 COMPONENTS Core Quick REQUIRED) # find Qt
-#set(CMAKE_AUTOMOC ON)

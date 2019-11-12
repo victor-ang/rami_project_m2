@@ -7,19 +7,12 @@
 
 
 Paquet :
-
-
 Jeu de 52 cartes.
-
-Le roi est la carte la plus forte.
-L'As est la carte la plus faible.
-
 ---------------------------------------------------------------------------
 
 But : 
 
-
-Etre le premier à poser toutes ses cartes, en 1 ou plusieurs fois.
+Etre le premier à poser toutes ses cartes, en une ou plusieurs fois.
 
 
 ---------------------------------------------------------------------------
@@ -27,12 +20,12 @@ Etre le premier à poser toutes ses cartes, en 1 ou plusieurs fois.
 Configuration :
 
 
-Chaque joueur a 13 cartes.
+Chaque joueur a 14 cartes.
 
 Les cartes qui ne sont pas distribuées sont placées face contre table au
 milieu de la table pour former la pioche.
 
-La premiere carte de la pioche est retournée à coté de la pioche pour former
+La première carte de la pioche est retournée à coté de la pioche pour former
 la défausse.
 
 
@@ -50,8 +43,12 @@ ou ajouter des cartes à une combinaison déjà posée sur la table.
 dessus de la défausse.
 Exception : si le joueur a posé toutes ses cartes, il n'a pas à se défausser.
 
-ATTENTION : si un joueur a pioché dans la défausse, il ne peut pas se
-défausser de cette même carte.
+ATTENTION : si un joueur a pioché dans la défausse, il doit la poser directement
+Sur le plateau
+
+4. Pour pouvoir déposer la première fois le joueur doit poser une tierce ainsi que
+un total de 51 points. Une fois cela fait, il pourra poser comme il veut sans 
+restrictions.
 
 
 ---------------------------------------------------------------------------
@@ -61,7 +58,6 @@ Combinaisons valables :
 
 Brelan : 3 cartes identiques
 Carré : 4 cartes identiques
-
 Séquence : au moins 3 cartes de même couleur.
 
 
@@ -76,6 +72,6 @@ Toutes les cartes restantes dans les mains des autres joueurs correspondent
 aux points gagnés par celui qui a posé toutes ses cartes.
 
 
-AS : 1 point
+AS : 1 point ou 10
 Cartes de 2 à 10 : nombre de points = numéro de la carte
 Valet, Dame, Roi : 10 points

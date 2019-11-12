@@ -4,11 +4,15 @@
 #include <string>
 
 class Carte {
+private :
+// mettre les attributs dans private
+
+public:
   // Valeur et couleur de la carte
   int valeur;
   std::string couleur;
 
-public:
+
   Carte() {
     valeur = 1;
     couleur = "Pique";
@@ -25,7 +29,7 @@ public:
   void afficherCarte(); // afficher une carte
 
   // Surcharge des opérateurs. Permer de comparer des objets de type carte en utilisant les opérateurs classiques
-  bool operator==(const Carte c) const;
+  bool operator==(const Carte c) const; // Rajouter des & : utiliser references
   bool operator<(const Carte c) const;
   bool operator>(const Carte c) const;
   bool operator<=(const Carte c) const;
