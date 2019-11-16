@@ -5,6 +5,8 @@
 #include "Carte.h"
 #include <algorithm>
 
+using namespace std;
+
 // Symboles ASCII cartes
 const char Coeur[] = "\xe2\x99\xa5";
 const char Trefle[] = "\xe2\x99\xa3";
@@ -25,7 +27,7 @@ void Paquet::ajoutDevant(Carte c) {
                             c); // ajoute carte a l'avant du paquet
 }
 void Paquet::melangerPaquet() {
-  std::random_shuffle(
+  random_shuffle(
       cartesPaquet.begin(),
       cartesPaquet.end()); // fonction du package algorithm. Melange le vecteur
                            // (on lui donne le debut et la fin)

@@ -102,7 +102,7 @@ void Scenario::placerSequence(Joueur *joueurActuel) {
   char id;
   switch (suitUneRegle) {
   case 1:
-    id = 'm';
+    id = 'b';
     cartesEnJeu->ajouterPile(cartesChoisies, joueurActuel, id);
     enleverCartes(cartesChoisies, joueurActuel);
     afficherTable(joueurActuel);
@@ -367,7 +367,7 @@ void Scenario::defausseFinTour(Joueur *joueurActuel) {
 	joueurActuel->hand->supprimerCarte(def);
 }
 void Scenario::modifierPile(Joueur *joueurActuel) {
-  char reponse = 'm';
+  char reponse = 's';
   afficherTable(joueurActuel);
   std::cout << "Voulez-vous ajouter des cartes à une pile existante ? (Y ou N)"
             << std::endl;
@@ -429,7 +429,7 @@ void Scenario::choixJouer(Joueur *joueurActuel) {
   std::cout << "Jouer des cartes ou terminer le tour ? (Y pour jouer, N pour "
                "terminer le tour) "
             << std::endl;
-  char reponse = 'm';
+  char reponse = 's';
   std::cin >> reponse;
   switch (reponse) {
   case 'Y':

@@ -9,7 +9,7 @@ void Joueur::afficherNom() { std::cout << nom << std::endl; }
 
 // Combien de cartes chaque joueur pioche a chaque nouveau jeu
 void Joueur::premiereMain(Paquet *paquet) {
-  for (int i = 0; i < 7; i++) {
+  for (int i = 0; i < 14; i++) {
     hand->ajouterCarte(paquet->piocheCarte()); 
   }
 }

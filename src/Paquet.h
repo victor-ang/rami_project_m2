@@ -13,7 +13,7 @@ public:
   // constructeur par defaut
   Paquet() {
     cartesPaquet = {};
-    addPile = 'd'; // Utilisée pour ajouter des cartes a une pile existante.
+    addPile = 'a'; // Utilisée pour ajouter des cartes a une pile existante.
                    // p=paquet,  s=sequence, b=brelan : a utiliser dans la fonction placer sequence pour verifier si c'est une sequence valable ou non
   }
 
