@@ -1,7 +1,7 @@
 #include "Hand.h"
+#include <algorithm>
 #include <iostream>
 #include <vector>
-#include<algorithm>
 
 // effacer la pile
 void Hand::effacerPile() { pileDeCartes = {}; }
@@ -18,7 +18,7 @@ void Hand::ajouterPile(std::vector<Carte> cartes, Joueur *j, char ide) {
   for (int i = 0; i < cartes.size(); i++) {
     ajout->ajouterCarte(cartes.at(i));
   }
-    ajout->addPile = ide;
+  ajout->addPile = ide;
   this->pileDeCartes.push_back(ajout);
   // modif du score
   int somme = 0;
@@ -37,27 +37,24 @@ void Hand::ajouterPile(std::vector<Carte> cartes, Joueur *j, char ide) {
 // retourner la pile
 std::vector<Paquet *> Hand::getPile() { return pileDeCartes; }
 
-//void Hand::setPile(std::vector<Paquet *> nouvellePile) {
-//  pileDeCartes = nouvellePile;
-//}
+
 
 // ajouter une carte à une pile existante
 void Hand::ajouterPileExistante(Carte c, int ind, Joueur *j) {
-  if (c < pileDeCartes.at(ind)->getCartes().at(0)){ //si carte plus petite que la premiere de la pile, on la met devant
+  if (c < pileDeCartes.at(ind)->getCartes().at(
+              0)) { // si carte plus petite que la premiere de la pile, on la
+                    // met devant
     this->pileDeCartes.at(ind)->ajoutDevant(c);
-  }
-  else {
+  } else {
     this->pileDeCartes.at(ind)->ajouterCarte(c); // Sinon, apres
   }
   int somme = 0;
-  if (c.getValeur()==1){ //si AS
-    somme +=1;
-  }
-  else if (c.getValeur() <= 10){ // si cartes de 2 a 10
-  somme += c.getValeur();
-  }
-  else{ // valet, dame, roi
-    somme +=10;
+  if (c.getValeur() == 1) { // si AS
+    somme += 1;
+  } else if (c.getValeur() <= 10) { // si cartes de 2 a 10
+    somme += c.getValeur();
+  } else { // valet, dame, roi
+    somme += 10;
   }
   j->score += somme; // ATTENTION : SCORE PRIVE
 }

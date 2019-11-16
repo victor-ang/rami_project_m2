@@ -7,19 +7,21 @@
 class Paquet {
 
 public:
-  char addPile;                     // private?
+  char addPile;                    // private?
   std::vector<Carte> cartesPaquet; // private ?
 
   // constructeur par defaut
   Paquet() {
     cartesPaquet = {};
-    addPile = 'p'; // Utilisée pour ajouter des cartes a une pile existante sur la table.
-                   // p=paquet,  s=sequence, b=brelan : a utiliser dans la fonction placer sequence pour verifier si c'est une sequence valable ou non (avec la carte ajoutée)
+    addPile = 'p'; // Utilisée pour ajouter des cartes a une pile existante sur
+                   // la table. p=paquet,  s=sequence, b=brelan : a utiliser
+                   // dans la fonction placer sequence pour verifier si c'est
+                   // une sequence valable ou non (avec la carte ajoutée)
   }
 
   // Constructeur avec cartes connues
 
-  Paquet(std::vector<Carte> c) { cartesPaquet = c ; }
+  Paquet(std::vector<Carte> c) { cartesPaquet = c; }
 
   void suppDerniereCarte();
   void initPaquet();
@@ -29,11 +31,9 @@ public:
   void nouveauPaquet();
   Carte piocheCarte();
   void ajouterCarte(Carte carteAjoutee);
-  //void afficherCartes();
   void supprimerCarte(Carte c);
   void viewerCartes();
   int taillePaquet();
-//  void suppCarteIndice(int ind);
   std::vector<Carte> getCartes();
 };
 

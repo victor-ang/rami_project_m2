@@ -1,9 +1,9 @@
 #include "Paquet.h"
+#include "Carte.h"
+#include <algorithm>
 #include <iostream>
 #include <stdlib.h>
 #include <string>
-#include "Carte.h"
-#include <algorithm>
 
 using namespace std;
 
@@ -67,11 +67,8 @@ Carte Paquet::piocheCarte() {
 void Paquet::ajouterCarte(Carte carteAjoutee) {
   this->cartesPaquet.push_back(carteAjoutee); // ajoute carte au paquet
 }
-//void Paquet::afficherCartes() {
-//  for (int i = 0; i < cartesPaquet.size(); i++) {
-//    this->cartesPaquet[i].afficherCarte();
-//  }
-//}
+
+
 void Paquet::supprimerCarte(Carte c) {
   if (taillePaquet() == 0) { // si paquet vide
     return;
@@ -201,8 +198,6 @@ void Paquet::viewerCartes() { // Fonction d'affichage visuel des cartes dans le
   }
 }
 int Paquet::taillePaquet() { return this->cartesPaquet.size(); }
-//void Paquet::suppCarteIndice(int ind) {
-//  this->cartesPaquet.erase(cartesPaquet.begin() +
-//                           ind); // supprime la carte a un indice donné
-//}
+
+
 std::vector<Carte> Paquet::getCartes() { return this->cartesPaquet; }
