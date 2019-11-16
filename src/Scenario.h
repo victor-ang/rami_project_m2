@@ -37,7 +37,7 @@ public:
   void afficherTable(Joueur* joueurActuel); // afficher la table
   void defausseFinTour(Joueur* joueurActuel); 
   void modifierPile(Joueur* joueurActuel);
-  void pilePioche(Joueur* joueurActuel);
+  void pileDefausse(Joueur* joueurActuel);
   void choixJouer(Joueur* joueurActuel); // demande si le joueur veut poser quelque chose sur la table
 
 };

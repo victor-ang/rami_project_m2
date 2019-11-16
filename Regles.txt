@@ -25,8 +25,7 @@ Chaque joueur a 14 cartes.
 Les cartes qui ne sont pas distribuées sont placées face contre table au
 milieu de la table pour former la pioche.
 
-La première carte de la pioche est retournée à coté de la pioche pour former
-la défausse.
+
 
 
 ---------------------------------------------------------------------------
@@ -58,7 +57,7 @@ Combinaisons valables :
 
 Brelan : 3 cartes identiques
 Carré : 4 cartes identiques
-Séquence : au moins 3 cartes de même couleur.
+Séquence : au moins 3 cartes de même couleur qui se suivent.
 
 
 
@@ -68,10 +67,9 @@ Score :
 
 
 Quand un joueur a terminé, on compte les points.
-Toutes les cartes restantes dans les mains des autres joueurs correspondent
-aux points gagnés par celui qui a posé toutes ses cartes.
+On déduit du scoreles cartes éventuellement restantes dans la main des joueurs.
 
 
-AS : 1 point ou 10
+AS : 1 point
 Cartes de 2 à 10 : nombre de points = numéro de la carte
 Valet, Dame, Roi : 10 points

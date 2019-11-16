@@ -5,9 +5,10 @@
 #include"Paquet.h"
 #include"Scenario.h"
 #include<fstream>
+#include <ctime>
 
 int main(){
-
+    //srand(time(NULL));
     bool exit = false;
     int choix = 0;
 

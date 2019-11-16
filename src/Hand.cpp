@@ -18,15 +18,15 @@ void Hand::ajouterPile(std::vector<Carte> cartes, Joueur *j, char ide) {
   for (int i = 0; i < cartes.size(); i++) {
     ajout->ajouterCarte(cartes.at(i));
   }
+    ajout->addPile = ide;
   this->pileDeCartes.push_back(ajout);
-  ajout->addPile = ide;
   // modif du score
   int somme = 0;
   for (int i = 0; i < cartes.size(); i++) {
     if (cartes.at(i).getValeur() == 1) { // si AS
       somme += 1;
     } else if (cartes.at(i).getValeur() <= 10) { // cartes de 2 a 10
-      somme += somme += cartes.at(i).getValeur();
+      somme += cartes.at(i).getValeur();
     } else {
       somme += 10;
     }
@@ -37,9 +37,9 @@ void Hand::ajouterPile(std::vector<Carte> cartes, Joueur *j, char ide) {
 // retourner la pile
 std::vector<Paquet *> Hand::getPile() { return pileDeCartes; }
 
-void Hand::setPile(std::vector<Paquet *> nouvellePile) {
-  pileDeCartes = nouvellePile;
-}
+//void Hand::setPile(std::vector<Paquet *> nouvellePile) {
+//  pileDeCartes = nouvellePile;
+//}
 
 // ajouter une carte à une pile existante
 void Hand::ajouterPileExistante(Carte c, int ind, Joueur *j) {

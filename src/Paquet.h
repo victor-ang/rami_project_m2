@@ -13,8 +13,8 @@ public:
   // constructeur par defaut
   Paquet() {
     cartesPaquet = {};
-    addPile = 'a'; // Utilisée pour ajouter des cartes a une pile existante.
-                   // p=paquet,  s=sequence, b=brelan : a utiliser dans la fonction placer sequence pour verifier si c'est une sequence valable ou non
+    addPile = 'p'; // Utilisée pour ajouter des cartes a une pile existante sur la table.
+                   // p=paquet,  s=sequence, b=brelan : a utiliser dans la fonction placer sequence pour verifier si c'est une sequence valable ou non (avec la carte ajoutée)
   }
 
   // Constructeur avec cartes connues
@@ -29,11 +29,11 @@ public:
   void nouveauPaquet();
   Carte piocheCarte();
   void ajouterCarte(Carte carteAjoutee);
-  void afficherCartes();
+  //void afficherCartes();
   void supprimerCarte(Carte c);
   void viewerCartes();
   int taillePaquet();
-  void suppCarteIndice(int ind);
+//  void suppCarteIndice(int ind);
   std::vector<Carte> getCartes();
 };
 

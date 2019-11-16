@@ -15,6 +15,8 @@ void Scenario::sequenceTour(Joueur *joueurActuel) {
   choixJouer(joueurActuel);
   defausseFinTour(joueurActuel);
 }
+
+
 int Scenario::checkSequence(std::vector<Carte> cartesSelection) {
   sort(cartesSelection.begin(),
        cartesSelection.end()); // sort : fonction de algorithm
@@ -26,7 +28,7 @@ int Scenario::checkSequence(std::vector<Carte> cartesSelection) {
   for (int i = 1; i < cartesSelection.size(); i++) {
 
     cartesIdentiques &=
-        cartesSelection[i].valeur == cartesSelection[i - 1].valeur;
+        cartesSelection[i].valeur == cartesSelection[i - 1].valeur; //comparaison valeurs
   }
   if (cartesIdentiques == true) {
     return 1;
@@ -35,7 +37,7 @@ int Scenario::checkSequence(std::vector<Carte> cartesSelection) {
   cartesIdentiques = true;
   for (int i = 1; i < cartesSelection.size(); i++) {
     cartesIdentiques &=
-        cartesSelection[i].couleur == cartesSelection[i - 1].couleur;
+        cartesSelection[i].couleur == cartesSelection[i - 1].couleur; //comparaison couleur
   }
   if (cartesIdentiques == true) {
     for (int i = 1; i < cartesSelection.size(); i++) {
@@ -49,6 +51,9 @@ int Scenario::checkSequence(std::vector<Carte> cartesSelection) {
   return -1;
 }
 
+
+
+
 void Scenario::tirerCarte(Joueur *joueurActuel) {
   //  Le joueur décide de piocher dans la pioche ou dans la défausse
   afficherTable(joueurActuel);
@@ -60,8 +65,8 @@ void Scenario::tirerCarte(Joueur *joueurActuel) {
   // Vérifier si le choix entré est correct
   std::string choixEntre;
   std::cin >> choixEntre;
-  int choix;
-  bool num;
+    int choix = 0;
+    bool num = false;
   for (int i = 0; i < choixEntre.length(); i++) {
     num = isdigit(choixEntre.at(i));
   }
@@ -79,7 +84,7 @@ void Scenario::tirerCarte(Joueur *joueurActuel) {
     break;
   }
   case 2:
-    pilePioche(joueurActuel);
+    pileDefausse(joueurActuel);
     return;
     break;
   default:
@@ -88,6 +93,10 @@ void Scenario::tirerCarte(Joueur *joueurActuel) {
     break;
   }
 }
+
+
+
+
 void Scenario::placerSequence(Joueur *joueurActuel) {
   std::vector<Carte> cartesChoisies;
   bool selection = true;
@@ -102,14 +111,14 @@ void Scenario::placerSequence(Joueur *joueurActuel) {
   char id;
   switch (suitUneRegle) {
   case 1:
-    id = 'b';
+    id = 'b'; //brelan
     cartesEnJeu->ajouterPile(cartesChoisies, joueurActuel, id);
     enleverCartes(cartesChoisies, joueurActuel);
     afficherTable(joueurActuel);
     choixJouer(joueurActuel);
     break;
   case 2:
-    id = 's';
+    id = 's'; //sequence
     cartesEnJeu->ajouterPile(cartesChoisies, joueurActuel, id);
     enleverCartes(cartesChoisies, joueurActuel);
     afficherTable(joueurActuel);
@@ -124,15 +133,19 @@ void Scenario::placerSequence(Joueur *joueurActuel) {
     break;
   }
 }
+
+
+
+
 void Scenario::ajouterCartesPileExistante(Joueur *joueurActuel) {
   std::cout << "Choisir une pile à laquelle ajouter les cartes:" << std::endl;
   cartesEnJeu->afficherPiles();
   std::vector<Carte> cartesSelectionnees;
   std::string entree;
   // Verification de l'entree
-  int selection;
+    int selection = 0;
   std::cin >> entree;
-  bool verif;
+    bool verif = false;
   for (int i = 0; i < entree.length(); i++) {
     verif = isdigit(entree.at(i));
   }
@@ -178,19 +191,24 @@ void Scenario::ajouterCartesPileExistante(Joueur *joueurActuel) {
     choixJouer(joueurActuel);
   }
 }
+
+
+
 void Scenario::enleverCartes(std::vector<Carte> cartes, Joueur *joueurActuel) {
   for (int i = 0; i < cartes.size(); i++) {
     joueurActuel->hand->supprimerCarte(cartes.at(i));
   }
 }
+
+
 Carte Scenario::selectionCarte(Joueur *joueurActuel) {
-  std::cout << "Choisir une carte (Entrer la valeur (1-13), puis Co,T,P,Ca pour la couleur" << std::endl;
+  std::cout << "Choisir une carte (Entrer la valeur (1-13), puis H (heart),T,P,C (Carreau) pour la couleur" << std::endl;
 	std::string entreeJoueur;
 	std::string couleurDedans;
 	std::string couleur;
 	std::cout << "Numéro: ";
 	std::cin >> entreeJoueur;
-	std::cout << "Couleur (Co,T,P,Ca): ";
+	std::cout << "Couleur (H (heart),T,P,C (Carreau)): ";
 	std::cin >> couleurDedans;
 	int entreeJ;
 	bool entreeVal = true;
@@ -213,11 +231,11 @@ Carte Scenario::selectionCarte(Joueur *joueurActuel) {
 		return selectionCarte(joueurActuel);
 	}
 
-	if(couleurDedans[0] == 'co' || couleurDedans[0] =='Co'){
+	if(couleurDedans[0] == 'h' || couleurDedans[0] =='H'){
 		couleur = "Coeur";
 	}else if(couleurDedans[0] == 't' || couleurDedans[0] =='T'){
 		couleur = "Trefle";
-	}else if(couleurDedans[0] == 'ca' || couleurDedans[0] =='Ca'){
+	}else if(couleurDedans[0] == 'c' || couleurDedans[0] =='C'){
 		couleur = "Carreau";
 	}else if(couleurDedans[0] == 'p' || couleurDedans[0] =='P'){
 		couleur = "Pique";
@@ -230,12 +248,12 @@ Carte Scenario::selectionCarte(Joueur *joueurActuel) {
 	// Recherche des cartes dans la main du joueur
 	bool trouve = false;
 	int i = 0;
-	if(joueur1->hand->taillePaquet() == 1){
+	if(joueurActuel->hand->taillePaquet() == 1){
 		trouve = true;
-		return joueur1->hand->getCartes().at(0);
+		return joueurActuel->hand->getCartes().at(0);
 	}
-	for(i = 0; i < joueur1->hand->taillePaquet(); i++){
-		if(cible == joueur1->hand->getCartes().at(i)){
+	for(i = 0; i < joueurActuel->hand->taillePaquet(); i++){
+		if(cible == joueurActuel->hand->getCartes().at(i)){
 			trouve = true;
 			break;
 		}
@@ -249,14 +267,13 @@ Carte Scenario::selectionCarte(Joueur *joueurActuel) {
 }
 void Scenario::jouer() {
   // Nombre de parties et premier joueur
-	int parties = 1;
 	int joueur = 1;
 	bool joueurGagnePartie = false;
 	int scoreJoueur1 = joueur1->score;
 	int scoreJoueur2 = joueur2->score;
-	while(joueur1->score < 500 && joueur2->score < 500){
+	//while(joueur1->score < 500 && joueur2->score < 500){
 		while(joueurGagnePartie == false) {
-			// Tour du joueur 1
+			// Tour du joueur 1 ou 2
 			if(pioche->taillePaquet() == 0){ // plus de cartes dans la pioche
 				// Ajouter toutes les cartes de la défausse dans la pioche et remelanger
 				std::cout << "Re mélange" << std::endl;
@@ -301,22 +318,16 @@ void Scenario::jouer() {
 		joueur1->premiereMain(pioche);
 		joueur2->premiereMain(pioche);
 		joueurGagnePartie = false;
-	}
+	//}
 
 	// Sorties lorsqu'un joueur gagne
-	if(joueur1->score >= 500){
-		std::cout << "Le joueur 1 a gagné! avec: "<< joueur1->score << " points!" << std::endl;
-	}else if(joueur2->score >= 500){
-		std::cout << "Le joueur 2 a gagné! avec: "<< joueur2->score << " points!" << std::endl;
-	}else{
-		if(joueur1->score > joueur2-> score){
-			std::cout << "Le joueur 1 a gagné! avec: "<< joueur1->score << " points!" << std::endl;
-		}else if(joueur2->score > joueur1->score){
-			std::cout << "Le joueur 2 a gagné! avec: "<< joueur2->score << " points!" << std::endl;
-		}else{
-			std::cout << "Egalité, avec: " << joueur1->score << " points" << std::endl;
-		}
-	}
+	if(joueur1->score > joueur2-> score){
+        std::cout << "Le joueur 1 a gagné! avec: "<< joueur1->score << " points!" << std::endl;
+    }else if(joueur2->score > joueur1->score){
+        std::cout << "Le joueur 2 a gagné! avec: "<< joueur2->score << " points!" << std::endl;
+    }else{
+        std::cout << "Egalité, avec: " << joueur1->score << " points" << std::endl;
+    }
 }
 
 void Scenario::afficherTable(Joueur *joueurActuel) {
@@ -337,37 +348,38 @@ void Scenario::afficherTable(Joueur *joueurActuel) {
   std::cout << "-------" << std::endl;
   std::cout << "Défausse" << std::endl;
   defausse->viewerCartes();
-  std::cout << "Cartes du joueur 2" << std::endl;
-  std::cout << "Cartes du joueur 1" << std::endl;
-  joueurActuel->afficherMain();
+  std::cout << "Cartes de " << joueurActuel->nom<< std::endl;
+    joueurActuel->afficherMain();
 }
 
 void Scenario::defausseFinTour(Joueur *joueurActuel) {
   joueurActuel->afficherMain();
 	afficherTable(joueurActuel);
-	if(joueurActuel->hand->taillePaquet() == 0){// defausse 
+	if(joueurActuel->hand->taillePaquet() == 0){// defausser
 		std::cout << "Veuillez jeter une carte" << std::endl;
 		sleep(2);
-		int pile = cartesEnJeu->getPile().size()-1;
+		unsigned long pile = cartesEnJeu->getPile().size()-1;
 		std::cout << pile << std::endl;
 		for(int i = 0; i < cartesEnJeu->getPile().at(pile)->taillePaquet(); i++){
 			//Remettre les cartes dans la main
 			cartesEnJeu->getPile().at(pile)->getCartes().at(i).afficherCarte();
-			joueur1->hand->ajouterCarte(cartesEnJeu->getPile().at(pile)->getCartes().at(i));
+			joueurActuel->hand->ajouterCarte(cartesEnJeu->getPile().at(pile)->getCartes().at(i));
 		}
 		cartesEnJeu->suppDernierELement();
 		afficherTable(joueurActuel);
 		choixJouer(joueurActuel);
 	}else{
-		std::cout << "Vous devez vous débarrasser d'une carte. Sélectionnez une carte à jeter (Entrez une valeur, puis Co,T,P,Ca pour la couleur)" << std::endl;
+		std::cout << "Vous devez vous débarrasser d'une carte. Sélectionnez une carte à jeter (Entrez une valeur, puis H,T,P,C pour la couleur)" << std::endl;
 
 	}
 	Carte def = selectionCarte(joueurActuel);
 	defausse->ajouterCarte(def);
 	joueurActuel->hand->supprimerCarte(def);
 }
+
+
 void Scenario::modifierPile(Joueur *joueurActuel) {
-  char reponse = 's';
+  char reponse = 'b';
   afficherTable(joueurActuel);
   std::cout << "Voulez-vous ajouter des cartes à une pile existante ? (Y ou N)"
             << std::endl;
@@ -380,7 +392,10 @@ void Scenario::modifierPile(Joueur *joueurActuel) {
     placerSequence(joueurActuel);
   }
 }
-void Scenario::pilePioche(Joueur *joueurActuel) {
+
+
+// Fonction pour piocher dans la défausse
+void Scenario::pileDefausse(Joueur *joueurActuel) {
   int taille = joueurActuel->hand->taillePaquet();
 	int scoreActuel = joueurActuel->score;
 	int num = -1;
@@ -397,7 +412,7 @@ void Scenario::pilePioche(Joueur *joueurActuel) {
 					joueurActuel->hand->ajouterCarte(defausse->getCartes().at(i));
 					
 				}
-				int difference = taille - joueurActuel->hand->taillePaquet();
+				//int difference = taille - joueurActuel->hand->taillePaquet();
 				for(int i = joueurActuel->hand->taillePaquet(); i > taille; i--){
 					defausse->suppDerniereCarte();
 				}
@@ -429,7 +444,7 @@ void Scenario::choixJouer(Joueur *joueurActuel) {
   std::cout << "Jouer des cartes ou terminer le tour ? (Y pour jouer, N pour "
                "terminer le tour) "
             << std::endl;
-  char reponse = 's';
+  char reponse = 'b';
   std::cin >> reponse;
   switch (reponse) {
   case 'Y':

@@ -23,7 +23,7 @@ void Carte::afficherCarte() {
           std::cout << "|";
         }
         // Affiche la valeur
-        else if ((j == 2 && i == 1) || (j == 4 && i == 4) && (valeur == 10)) {
+        else if (((j == 2 && i == 1) || (j == 4 && i == 4)) && (valeur == 10)) {
           if ((valeur == 10) && (i == 4)) {
             std::cout << '1';
           } else if ((valeur == 10) && (i == 1)) {
@@ -89,14 +89,16 @@ std::string Carte::getCouleur() { // obtenir couleur de la carte
 
 // Operateur egal
 bool Carte::operator==(const Carte c) const {
+    bool test = false;
   if (c.valeur == valeur) {
     if (couleur == c.couleur) {
-      return true;
+      test= true;
     }
   }
   else{
-    return false;
+    test= false;
   }
+    return test;
 }
 
 // Operateur plus petit que

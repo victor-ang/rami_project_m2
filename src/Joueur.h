@@ -30,8 +30,8 @@ public:
     hand = h;
     score = sco;
   }
-  Paquet* getMain();  // Retourne la main du joueur
-  void afficherNom(); // Afficher le nom du joueur
+  //Paquet* getMain();  // Retourne la main du joueur
+  //void afficherNom(); // Afficher le nom du joueur
   void premiereMain(Paquet * paquet); // Combien de cartes chaque joueur pioche a chaque nouveau jeu
   void afficherMain(); // Afficher la main
   bool verifieCartes(); // True si aucune carte dans la main

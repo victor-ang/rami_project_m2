@@ -2,10 +2,10 @@
 #include <string>
 
 // Retourne la main du joueur
-Paquet *Joueur::getMain() { return hand; }
+//Paquet *Joueur::getMain() { return hand; }
 
 // Afficher le nom du joueur
-void Joueur::afficherNom() { std::cout << nom << std::endl; }
+//void Joueur::afficherNom() { std::cout << nom << std::endl; }
 
 // Combien de cartes chaque joueur pioche a chaque nouveau jeu
 void Joueur::premiereMain(Paquet *paquet) {
@@ -21,11 +21,13 @@ void Joueur::afficherMain() {
 
 // True si aucune carte dans la main
 bool Joueur::verifieCartes() {
+    bool test = false;
   if (hand->taillePaquet() == 0) { 
-    return true;
+    test= true;
   } else {
-    return false;
+    test= false;
   }
+    return test;
 }
 
 // soustrait le score à la fin du jeu (car le score est augmente des qu'un

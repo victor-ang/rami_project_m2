@@ -52,7 +52,7 @@ void Paquet::nouveauPaquet() {
       break;
     }
 
-    // Creation des cartes
+    // Creation des cartes de l'as au roi
     for (int car = 1; car <= 13; car++) {
       Carte carteActuelle(car, couleur);
       ajouterCarte(carteActuelle);
@@ -67,11 +67,11 @@ Carte Paquet::piocheCarte() {
 void Paquet::ajouterCarte(Carte carteAjoutee) {
   this->cartesPaquet.push_back(carteAjoutee); // ajoute carte au paquet
 }
-void Paquet::afficherCartes() {
-  for (int i = 0; i < cartesPaquet.size(); i++) {
-    this->cartesPaquet[i].afficherCarte();
-  }
-}
+//void Paquet::afficherCartes() {
+//  for (int i = 0; i < cartesPaquet.size(); i++) {
+//    this->cartesPaquet[i].afficherCarte();
+//  }
+//}
 void Paquet::supprimerCarte(Carte c) {
   if (taillePaquet() == 0) { // si paquet vide
     return;
@@ -81,17 +81,17 @@ void Paquet::supprimerCarte(Carte c) {
   } else { // si plus d'une carte
     for (int i = 0; i < taillePaquet(); i++) {
       if (cartesPaquet.at(i) == c) {
-        this->cartesPaquet.erase(cartesPaquet.begin() + 1);
+        this->cartesPaquet.erase(cartesPaquet.begin() + i);
       }
     }
   }
 }
 void Paquet::viewerCartes() { // Fonction d'affichage visuel des cartes dans le
                               // terminal
-  int totalCartes = cartesPaquet.size();
+  unsigned long totalCartes = cartesPaquet.size();
   int carteActuelle;
   int i = 0;
-  int yBounds = (3 * (totalCartes)) + 4;
+  unsigned long yBounds = (3 * (totalCartes)) + 4;
 
   if (totalCartes == 0) { // si pas de cartes, on n'affiche rien
     return;
@@ -201,8 +201,8 @@ void Paquet::viewerCartes() { // Fonction d'affichage visuel des cartes dans le
   }
 }
 int Paquet::taillePaquet() { return this->cartesPaquet.size(); }
-void Paquet::suppCarteIndice(int ind) {
-  this->cartesPaquet.erase(cartesPaquet.begin() +
-                           ind); // supprime la carte a un indice donné
-}
+//void Paquet::suppCarteIndice(int ind) {
+//  this->cartesPaquet.erase(cartesPaquet.begin() +
+//                           ind); // supprime la carte a un indice donné
+//}
 std::vector<Carte> Paquet::getCartes() { return this->cartesPaquet; }
