@@ -2,12 +2,10 @@
 #include "Joueur.h"
 #include "Paquet.h"
 #include "Scenario.h"
-#include <ctime>
 #include <fstream>
 #include <iostream>
 
 int main() {
-  // srand(time(NULL));
   bool exit = false;
   int choix = 0;
 
@@ -16,8 +14,8 @@ int main() {
   std::string contenu;
 
   // Creation  du paquet
-  Paquet *paquetDeJeu = new Paquet(); // ajouter destructeur
-  paquetDeJeu->initPaquet();
+  Paquet *paquetDeJeu = new Paquet();
+  paquetDeJeu->initPaquet(); // initialisation
 
   // Creation de la defausse
   Paquet *defausse = new Paquet();
@@ -45,7 +43,7 @@ int main() {
     // Accueil jeu
     std::cout << std::endl;
     std::cout << "######################" << std::endl;
-    std::cout << "#      Rami BWB      #" << std::endl;
+    std::cout << "#        Rami        #" << std::endl;
     std::cout << "######################" << std::endl;
     std::cout << std::endl;
     std::cout << "Choisir une option" << std::endl;
@@ -58,14 +56,14 @@ int main() {
     switch (choix) { // selon le choix effectué
     // Jouer
     case 1:
-      tableDeJeu->joueur1->score = 0;
-      tableDeJeu->joueur2->score = 0;
+      tableDeJeu->joueur1->setScore(0); // score initial joueur1
+      tableDeJeu->joueur2->setScore(0); // score initial joueur2
       tableDeJeu->jouer();
       break;
 
-    // Afficher regles (le smettre dans un document txt)
+    // Afficher regles
     case 2:
-      std::cout << std::endl << std::endl; // espacement (sinon moche)
+      std::cout << std::endl << std::endl; // espacement
       while (std::getline(file, contenu)) {
         std::cout << contenu << std::endl;
       }
@@ -83,7 +81,7 @@ int main() {
       break;
     }
   }
-  std::cout << "Hasta luego" << std::endl;
+  std::cout << "Merci !" << std::endl;
 
   return 0;
 }

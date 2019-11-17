@@ -4,36 +4,28 @@
 #include <string>
 
 class Carte {
-private :
-// mettre les attributs dans private
+private:
+  int valeur;          // valeur de la carte
+  std::string couleur; // couleur de la carte
 
 public:
-  // Valeur et couleur de la carte
-  int valeur;
-  std::string couleur;
+  Carte(); // constructeur par défaut
+  Carte(int valCarte, std::string couleurCarte);
 
-
-  Carte() {
-    valeur = 1;
-    couleur = "Pique";
-  } // constructeur par defaut
-
-  Carte(int valCarte, std::string couleurCarte) // valeur de la carte connue
-  {
-    this->valeur = valCarte;
-    this->couleur = couleurCarte;
-  }
-
-  int getValeur();          // obtenir numero de la carte
+  int getValeur(); // obtenir numero de la carte
+  void setValeur(int v);
   std::string getCouleur(); // obtenir couleur de la carte
+  void setCouleur(std::string c);
   void afficherCarte(); // afficher une carte
 
-  // Surcharge des opérateurs. Permer de comparer des objets de type carte en utilisant les opérateurs classiques
-  bool operator==(const Carte c) const; // Rajouter des & : utiliser references
-  bool operator<(const Carte c) const;
-  bool operator>(const Carte c) const;
-  bool operator<=(const Carte c) const;
-  bool operator>=(const Carte c) const;
+  // Surcharge des opérateurs. Permer de comparer des objets de type carte en
+  // utilisant les opérateurs classiques
+
+  bool operator==(const Carte &c) const;
+  bool operator<(const Carte &c) const;
+  bool operator>(const Carte &c) const;
+  bool operator<=(const Carte &c) const;
+  bool operator>=(const Carte &c) const;
 };
 
 #endif

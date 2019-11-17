@@ -2,14 +2,25 @@
 #include <iostream>
 #include <string>
 
-// Symboles ASCII des couleurs
+// Constructeur par defaut
+Carte::Carte() {
+  valeur = 1;
+  couleur = "Pique";
+}
+
+// Valeur de la carte connue
+Carte::Carte(int valCarte, std::string couleurCarte) {
+  this->valeur = valCarte;
+  this->couleur = couleurCarte;
+}
+
+// Symboles ASCII des couleurs (pour affichage dans le terminal)
 const char Coeur[] = "\xe2\x99\xa5";
 const char Pique[] = "\xe2\x99\xa0";
 const char Carreau[] = "\xe2\x99\xa6";
 const char Trefle[] = "\xe2\x99\xa3";
 
-// Afficher carte
-
+// Afficher carte dans le terminal
 void Carte::afficherCarte() {
   // Afficher les contours
   for (int i = 0; i < 6; i++) {
@@ -84,59 +95,63 @@ std::string Carte::getCouleur() { // obtenir couleur de la carte
   return couleur;
 }
 
-// Surcharge des opérateurs : permet de comparer les cartes avec les operateurs
-// mathematiques. Utilises pour trier les vecteurs de cartes
+void Carte::setValeur(int v) { this->valeur = v; }
+
+void Carte::setCouleur(std::string c) { this->couleur = c; }
 
 // Operateur egal
-bool Carte::operator==(const Carte c) const {
-    bool test = false;
+bool Carte::operator==(const Carte &c) const {
+  bool isEqual = false;
   if (c.valeur == valeur) {
     if (couleur == c.couleur) {
-      test= true;
+      isEqual = true;
     }
+  } else {
+    isEqual = false;
   }
-  else{
-    test= false;
-  }
-    return test;
+  return isEqual;
 }
 
 // Operateur plus petit que
-bool Carte::operator<(const Carte c) const {
+bool Carte::operator<(const Carte &c) const {
+  bool isInf = false;
   if (valeur < c.valeur) {
-    return true;
+    isInf = true;
+  } else {
+    isInf = false;
   }
-  else{
-    return false;
-  }
+  return isInf;
 }
 
 // Operateur plus grand que
-bool Carte::operator>(const Carte c) const {
+bool Carte::operator>(const Carte &c) const {
+  bool isSup = false;
   if (valeur > c.valeur) {
-    return true;
+    isSup = true;
+  } else {
+    isSup = false;
   }
-  else{
-    return false;
-  }
+  return isSup;
 }
 
 // Operateur plus petit ou egal
-bool Carte::operator<=(const Carte c) const {
+bool Carte::operator<=(const Carte &c) const {
+  bool isLeq = false;
   if (valeur <= c.valeur) {
-    return true;
+    isLeq = true;
+  } else {
+    isLeq = false;
   }
-  else{
-    return false;
-  }
+  return isLeq;
 }
 
 // Operateur plus grand ou egal
-bool Carte::operator>=(const Carte c) const {
+bool Carte::operator>=(const Carte &c) const {
+  bool isGeq = false;
   if (valeur >= c.valeur) {
-    return true;
+    isGeq = true;
+  } else {
+    isGeq = false;
   }
-  else{
-    return false;
-  }
+  return isGeq;
 }

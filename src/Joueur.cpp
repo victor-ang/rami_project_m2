@@ -1,11 +1,37 @@
 #include "Joueur.h"
 #include <string>
 
+// constructeur par defaut : initialise le joueur
+Joueur::Joueur() {
+  this->hand = {};
+  this->score = 0; // score du joeur à 0 au début
+}
 
+Joueur::Joueur(std::string n) {
+  nom = n;
+  hand = new Paquet();
+}
+Joueur::Joueur(Paquet *h, int sco) {
+  hand = h;
+  score = sco;
+}
+
+Joueur::~Joueur() { delete hand; }
+
+// Saisir le nom du joueur
+void Joueur::setNom(std::string n) { this->nom = n; }
+
+std::string Joueur::getNom() { return this->nom; };
+
+// saisir le score
+void Joueur::setScore(int s) { this->score = s; }
+
+// obtenir le score du joueur
+int Joueur::getScore() { return this->score; }
 
 // Combien de cartes chaque joueur pioche a chaque nouveau jeu
 void Joueur::premiereMain(Paquet *paquet) {
-  for (int i = 0; i < 14; i++) {
+  for (int i = 0; i < 14; i++) { // 14 cartes au début de la partie
     hand->ajouterCarte(paquet->piocheCarte());
   }
 }
@@ -15,7 +41,7 @@ void Joueur::afficherMain() {
   hand->viewerCartes(); // affiche visuellement la main dans le terminal
 }
 
-// True si aucune carte dans la main
+// True si aucune carte dans la main = test partie finie ou non
 bool Joueur::verifieCartes() {
   bool test = false;
   if (hand->taillePaquet() == 0) {
@@ -26,8 +52,6 @@ bool Joueur::verifieCartes() {
   return test;
 }
 
-// soustrait le score à la fin du jeu (car le score est augmente des qu'un
-// joueur pioche une carte)
 void Joueur::soustraireScore() {
   int somme = 0;
   for (int i = 0; i < hand->taillePaquet();
@@ -35,8 +59,6 @@ void Joueur::soustraireScore() {
     if (hand->getCartes().at(i).getValeur() <=
         10) { // si carte inf à 10, pts=valeur de la carte
       somme += hand->getCartes()[i].getValeur();
-    } else if (hand->getCartes().at(i).getValeur() == 1) { // si  AS,  1 pts
-      somme += 1;
     } else { // si figure, 10 pts
       somme += 10;
     }

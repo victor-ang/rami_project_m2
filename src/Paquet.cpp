@@ -1,39 +1,52 @@
 #include "Paquet.h"
 #include "Carte.h"
 #include <algorithm>
+#include <ctime>
 #include <iostream>
 #include <stdlib.h>
 #include <string>
 
-using namespace std;
+Paquet::Paquet() {
+  cartesPaquet = {};
+}
 
-// Symboles ASCII cartes
+// Constructeur avec cartes connues
+Paquet::Paquet(std::vector<Carte> c) { cartesPaquet = c; }
+
+// Symboles ASCII cartes (affichage terminal)
 const char Coeur[] = "\xe2\x99\xa5";
 const char Trefle[] = "\xe2\x99\xa3";
 const char Carreau[] = "\xe2\x99\xa6";
 const char Pique[] = "\xe2\x99\xa0";
 
+
 void Paquet::suppDerniereCarte() {
-  this->cartesPaquet
-      .pop_back(); // pop_back vide retire le dernier element du vecteur
+  this->cartesPaquet.pop_back(); // pop_back vide retire le dernier element du vecteur
 }
 void Paquet::initPaquet() {
+  // nouveau paquet trié, puis on le mélange
   nouveauPaquet();
   melangerPaquet();
 }
 void Paquet::viderPile() { this->cartesPaquet.clear(); }
 void Paquet::ajoutDevant(Carte c) {
-  this->cartesPaquet.insert(cartesPaquet.begin(),
-                            c); // ajoute carte a l'avant du paquet
+  this->cartesPaquet.insert(cartesPaquet.begin(), c); // ajoute carte a l'avant du paquet
 }
+
+int Paquet::nbMelangesAleatoires() {
+  srand(time(NULL)); // temps aleatoire depuis 1970 (nouveau chaque seconde)
+  return rand() % (100 - 1 + 1) + 1; // tirage entre 1 et 100
+}
+
 void Paquet::melangerPaquet() {
-  random_shuffle(
-      cartesPaquet.begin(),
-      cartesPaquet.end()); // fonction du package algorithm. Melange le vecteur
-                           // (on lui donne le debut et la fin)
+  int nbMelanges = nbMelangesAleatoires(); // nombre de mélanges
+  for (int i = 0; i < nbMelanges; i++) {
+    random_shuffle(cartesPaquet.begin(),  cartesPaquet.end()); // fonction du package algorithm. Melange le vecteur
+                                                              // (on lui donne le debut et la fin du paquet à melanger)
+  }
 }
 void Paquet::nouveauPaquet() {
-  std::string couleur;
+  std::string couleur; // couleurs
 
   // Creation du paquet
   for (int cou = 0; cou < 4; cou++) {
@@ -55,38 +68,39 @@ void Paquet::nouveauPaquet() {
     // Creation des cartes de l'as au roi
     for (int car = 1; car <= 13; car++) {
       Carte carteActuelle(car, couleur);
-      ajouterCarte(carteActuelle);
+      ajouterCarte(carteActuelle); // ajout de la carte créée au paquet
     }
   }
 }
 Carte Paquet::piocheCarte() {
   Carte dessus = getCartes()[cartesPaquet.size() - 1];
-  suppDerniereCarte();
+  //derniere carte paquet
+  suppDerniereCarte(); // on la supprime du paquet (pour apres l'ajouter au jeu
+                       // du joueur)
   return dessus;
 }
 void Paquet::ajouterCarte(Carte carteAjoutee) {
   this->cartesPaquet.push_back(carteAjoutee); // ajoute carte au paquet
 }
 
-
 void Paquet::supprimerCarte(Carte c) {
-  if (taillePaquet() == 0) { // si paquet vide
+  if (taillePaquet() == 0) { // si paquet vide, rien
     return;
   } else if (taillePaquet() == 1) { // si plus qu'une carte
-    suppDerniereCarte();
+    suppDerniereCarte();            // suppression de la seule carte
     return;
-  } else { // si plus d'une carte
-    for (int i = 0; i < taillePaquet(); i++) {
-      if (cartesPaquet.at(i) == c) {
-        this->cartesPaquet.erase(cartesPaquet.begin() + i);
+  } else {                                     // si plus d'une carte
+    for (int i = 0; i < taillePaquet(); i++) { // parcours des cartes
+      if (cartesPaquet.at(i) == c) {           // si carte trouvée
+        this->cartesPaquet.erase(cartesPaquet.begin() + i); // on la supprime
       }
     }
   }
 }
 void Paquet::viewerCartes() { // Fonction d'affichage visuel des cartes dans le
                               // terminal
-  unsigned long totalCartes = cartesPaquet.size();
-  int carteActuelle;
+  unsigned long totalCartes = cartesPaquet.size(); // taille paquet
+  int carteActuelle = 0;
   int i = 0;
   unsigned long yBounds = (3 * (totalCartes)) + 4;
 
@@ -198,6 +212,5 @@ void Paquet::viewerCartes() { // Fonction d'affichage visuel des cartes dans le
   }
 }
 int Paquet::taillePaquet() { return this->cartesPaquet.size(); }
-
 
 std::vector<Carte> Paquet::getCartes() { return this->cartesPaquet; }
