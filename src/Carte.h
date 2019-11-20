@@ -4,7 +4,7 @@
 #include <string>
 
 class Carte {
-private:
+protected:
   int valeur;          // valeur de la carte
   std::string couleur; // couleur de la carte
 

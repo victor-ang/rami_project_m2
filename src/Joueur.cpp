@@ -1,5 +1,6 @@
 #include "Joueur.h"
 #include <string>
+#include <vector>
 
 // constructeur par defaut : initialise le joueur
 Joueur::Joueur() {
@@ -32,7 +33,8 @@ int Joueur::getScore() { return this->score; }
 // Combien de cartes chaque joueur pioche a chaque nouveau jeu
 void Joueur::premiereMain(Paquet *paquet) {
   for (int i = 0; i < 14; i++) { // 14 cartes au début de la partie
-    hand->ajouterCarte(paquet->piocheCarte());
+    hand->ajouterCarte(
+        paquet->piocheCarte()); // ajout carte du paquet vers la main du joueur
   }
 }
 
@@ -52,7 +54,9 @@ bool Joueur::verifieCartes() {
   return test;
 }
 
-void Joueur::soustraireScore() {
+void Joueur::soustraireScore() { // si un joueur a encore des cartes en main a
+                                 // la fin de la partie, on retire des pts à son
+                                 // score
   int somme = 0;
   for (int i = 0; i < hand->taillePaquet();
        i++) { // on parcourt le vecteur hand

@@ -15,6 +15,7 @@ Carte::Carte(int valCarte, std::string couleurCarte) {
 }
 
 // Symboles ASCII des couleurs (pour affichage dans le terminal)
+// Nb : ne fonctionne pas sur windows ??
 const char Coeur[] = "\xe2\x99\xa5";
 const char Pique[] = "\xe2\x99\xa0";
 const char Carreau[] = "\xe2\x99\xa6";
@@ -27,13 +28,13 @@ void Carte::afficherCarte() {
     for (int j = 0; j < 7; j++) {
       // Si rangée du haut ou du bas
       if (i == 0 || i == 5) {
-        std::cout << "-";
+        std::cout << "-"; // bordures haute et basse des cartes
       } else {
         // Si c'est le cote
         if (j == 0 || j == 6) {
-          std::cout << "|";
+          std::cout << "|"; // bordures gauche et droite des cartes
         }
-        // Affiche la valeur
+        // Affiche la valeur (10)
         else if (((j == 2 && i == 1) || (j == 4 && i == 4)) && (valeur == 10)) {
           if ((valeur == 10) && (i == 4)) {
             std::cout << '1';
@@ -43,7 +44,7 @@ void Carte::afficherCarte() {
             std::cout << " ";
           }
         }
-        // 2 chiffres
+        // autres valeurs
         else if ((j == 1 && i == 1) || (j == 5 && i == 4)) {
           if (valeur == 1) {
             std::cout << 'A';
@@ -95,9 +96,13 @@ std::string Carte::getCouleur() { // obtenir couleur de la carte
   return couleur;
 }
 
-void Carte::setValeur(int v) { this->valeur = v; }
+void Carte::setValeur(int v) { this->valeur = v; } // donner une valeur
 
-void Carte::setCouleur(std::string c) { this->couleur = c; }
+void Carte::setCouleur(std::string c) {
+  this->couleur = c;
+} // donner une couleur
+
+// SURCHARGE DES OPERATEURS
 
 // Operateur egal
 bool Carte::operator==(const Carte &c) const {

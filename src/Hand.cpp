@@ -3,19 +3,20 @@
 #include <iostream>
 #include <vector>
 
-Hand::Hand() { pileDeCartes = {}; }
+Hand::Hand() { pileDeCartes = {}; } // Main d'un joueur
 
 // Constructeur avec pile donnée
 Hand::Hand(std::vector<Paquet *> pile) { pileDeCartes = pile; }
 
-
 // Supprimer le dernier element
-void Hand::suppDernierELement() { this->pileDeCartes.pop_back(); }
+void Hand::suppDernierELement() {
+  this->pileDeCartes.pop_back();
+} // utilisation de la fonction pop_back de vector
 
 // Ajouter a la pile et augmenter le score du joueur
 void Hand::ajouterPile(std::vector<Carte> cartes, Joueur *j) {
   sort(cartes.begin(), cartes.end()); // tri du vecteur
-  Paquet *ajout = new Paquet();
+  Paquet *ajout = new Paquet();       // nouveau paquet (pile)
 
   // Ajout des cartes à la pile
   for (int i = 0; i < cartes.size(); i++) {
@@ -45,7 +46,7 @@ void Hand::ajouterPileExistante(Carte c, int ind, Joueur *j) {
   } else {
     this->pileDeCartes.at(ind)->ajouterCarte(c); // Sinon, apres
   }
-  int somme = 0;
+  int somme = 0;             // score du joueur
   if (c.getValeur() <= 10) { // si cartes de 1 a 10
     somme += c.getValeur();
   } else { // valet, dame, roi

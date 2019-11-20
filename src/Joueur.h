@@ -13,7 +13,7 @@ private:
   int score;
 
 public:
-  Paquet *hand;
+  Paquet *hand; // Main du joueur
 
   // constructeur par defaut : initialise le joueur
   Joueur();
@@ -21,10 +21,10 @@ public:
   Joueur(Paquet *h, int sco);
   ~Joueur(); // destructeur
 
-  void setNom(std::string n);
-  std::string getNom();
-  void setScore(int s);
-  int getScore();
+  void setNom(std::string n); // set nom du joueur
+  std::string getNom();       // obtenir nom du joueur
+  void setScore(int s);       // set score du joueur
+  int getScore();             // obtenir score du joueur
   void premiereMain(Paquet *paquet); // Combien de cartes chaque joueur pioche au
                                 // debut de la partie = distribution des cartes
   void afficherMain();          // Afficher la main

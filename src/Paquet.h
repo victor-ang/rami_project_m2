@@ -4,7 +4,7 @@
 #include <vector>
 
 // Ensemble des cartes
-class Paquet {
+class Paquet : public Carte {
 
 private:
   std::vector<Carte> cartesPaquet;

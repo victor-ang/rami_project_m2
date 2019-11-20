@@ -10,9 +10,9 @@
 class Scenario {
 
 private:
-  Hand *cartesEnJeu;
-  Paquet *pioche;
-  Paquet *defausse;
+  Hand *cartesEnJeu; // cartes en jeu
+  Paquet *pioche;    // pioche
+  Paquet *defausse;  // défausse
 
 public:
   Joueur *joueur1;
@@ -23,7 +23,7 @@ public:
   ~Scenario(); // destructeur
 
   void sequenceTour(Joueur *joueurActuel); // sequence de tour d'un joueur
-  int checkSequence(std::vector<Carte>  cartesSelection); // check si les cartes forment une sequence ou pas
+  int checkSequence(std::vector<Carte> cartesSelection); // check si les cartes forment une sequence ou pas
   void tirerCarte(Joueur *joueurActuel);     // tirer carte (pile ou defausse)
   void placerSequence(Joueur *joueurActuel); // placer une sequence
   void ajouterCartesPileExistante(Joueur *joueurActuel); // ajouter des cartes a une pile existante sur la table
