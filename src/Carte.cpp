@@ -15,7 +15,7 @@ Carte::Carte(int valCarte, std::string couleurCarte) {
 }
 
 // Symboles ASCII des couleurs (pour affichage dans le terminal)
-// Nb : ne fonctionne pas sur windows ??
+// Nb : ne fonctionne pas sur windows ?
 const char Coeur[] = "\xe2\x99\xa5";
 const char Pique[] = "\xe2\x99\xa0";
 const char Carreau[] = "\xe2\x99\xa6";

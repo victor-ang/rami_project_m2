@@ -19,7 +19,6 @@ public:
   Joueur *joueur2;
 
   Scenario(Joueur *j1, Joueur *j2, Paquet *pilePioche, Paquet *pileDefausse);
-
   ~Scenario(); // destructeur
 
   void sequenceTour(Joueur *joueurActuel); // sequence de tour d'un joueur

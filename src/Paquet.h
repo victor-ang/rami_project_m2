@@ -12,7 +12,6 @@ private:
 public:
   // constructeur par defaut
   Paquet();
-
   // Constructeur avec cartes connues
   Paquet(std::vector<Carte> c);
 

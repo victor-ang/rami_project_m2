@@ -19,7 +19,7 @@ public:
   void afficherCarte(); // afficher une carte
 
   // Surcharge des opérateurs. Permer de comparer des objets de type carte en
-  // utilisant les opérateurs classiques
+  // utilisant les opérateurs classiques.
 
   bool operator==(const Carte &c) const;
   bool operator<(const Carte &c) const;
