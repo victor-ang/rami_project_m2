@@ -6,15 +6,17 @@
 Joueur::Joueur() {
   this->hand = {};
   this->score = 0; // score du joeur à 0 au début
+  this->choice = 0;
 }
 
 Joueur::Joueur(std::string n) {
   nom = n;
   hand = new Paquet();
 }
-Joueur::Joueur(Paquet *h, int sco) {
+Joueur::Joueur(Paquet *h, int sco, int cho) {
   hand = h;
   score = sco;
+  choice = cho;
 }
 
 Joueur::~Joueur() { delete hand; }
@@ -29,6 +31,12 @@ void Joueur::setScore(int s) { this->score = s; }
 
 // obtenir le score du joueur
 int Joueur::getScore() { return this->score; }
+
+// saisir le choix
+void Joueur::setChoice(int c) { this->choice = c; }
+
+// obtenir le choix du joueur
+int Joueur::getChoice() { return this->choice; }
 
 // Combien de cartes chaque joueur pioche a chaque nouveau jeu
 void Joueur::premiereMain(Paquet *paquet) {
