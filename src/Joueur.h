@@ -26,10 +26,10 @@ public:
   std::string getNom();       // obtenir nom du joueur
   void setScore(int s);       // set score du joueur
   int getScore();             // obtenir score du joueur
-  void setChoice(int c);       // set choix du joueur
-  int getChoice();             // obtenir choix du joueur
+  void setChoice(int c);      // set choix du joueur
+  int getChoice();            // obtenir choix du joueur
   void premiereMain(Paquet *paquet); // Combien de cartes chaque joueur pioche au
-                                // debut de la partie = distribution des cartes
+                                      // debut de la partie = distribution des cartes
   void afficherMain();          // Afficher la main
   bool verifieCartes();         // True si aucune carte dans la main : permet de
                                 // verifier si fin de la partie

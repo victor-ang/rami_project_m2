@@ -36,8 +36,7 @@ int main() {
   joueur2->premiereMain(paquetDeJeu); // cartes du joueur 2 à l'initialisation de la partie
 
   // Mise en place de la table
-  Scenario *tableDeJeu =
-      new Scenario(joueur1, joueur2, paquetDeJeu, defausse); // nouveau scenario
+  Scenario *tableDeJeu = new Scenario(joueur1, joueur2, paquetDeJeu, defausse); // nouveau scenario
 
   // Boucle tant que le jeu continue
 

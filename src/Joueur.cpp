@@ -41,8 +41,7 @@ int Joueur::getChoice() { return this->choice; }
 // Combien de cartes chaque joueur pioche a chaque nouveau jeu
 void Joueur::premiereMain(Paquet *paquet) {
   for (int i = 0; i < 14; i++) { // 14 cartes au début de la partie
-    hand->ajouterCarte(
-        paquet->piocheCarte()); // ajout carte du paquet vers la main du joueur
+    hand->ajouterCarte(paquet->piocheCarte()); // ajout carte du paquet vers la main du joueur
   }
 }
 

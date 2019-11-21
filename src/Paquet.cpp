@@ -11,15 +11,14 @@ Paquet::Paquet() { cartesPaquet = {}; }
 // Constructeur avec cartes connues
 Paquet::Paquet(std::vector<Carte> c) { cartesPaquet = c; }
 
-// Symboles ASCII cartes (affichage terminal)
+// Symboles ASCII cartes (affichage terminal) (ne fonctionne pas sous Windows)
 const char Coeur[] = "\xe2\x99\xa5";
 const char Trefle[] = "\xe2\x99\xa3";
 const char Carreau[] = "\xe2\x99\xa6";
 const char Pique[] = "\xe2\x99\xa0";
 
 void Paquet::suppDerniereCarte() {
-  this->cartesPaquet
-      .pop_back(); // pop_back vide retire le dernier element du vecteur
+  this->cartesPaquet.pop_back(); // pop_back vide retire le dernier element du vecteur
 }
 void Paquet::initPaquet() {
   // nouveau paquet trié, puis on le mélange

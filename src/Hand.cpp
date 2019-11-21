@@ -9,7 +9,7 @@ Hand::Hand() { pileDeCartes = {}; } // Main d'un joueur
 Hand::Hand(std::vector<Paquet *> pile) { pileDeCartes = pile; }
 
 // Supprimer le dernier element
-void Hand::suppDernierELement() {
+void Hand::suppDernierElement() {
   this->pileDeCartes.pop_back();
 } // utilisation de la fonction pop_back de vector
 
